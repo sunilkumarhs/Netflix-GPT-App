@@ -1,7 +1,9 @@
+import Body from "./components/Body";
+
 function App() {
   return (
-    <div className="text-2xl text-slate-500 font-bold">
-      Welcome to Netflix-GPT Application building using react
+    <div>
+      <Body />
     </div>
   );
 }
