@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { checkSignInValidData } from "../../utils/validate";
 
 const Login = () => {
   const navigate = useNavigate();
+  const email = useRef(null);
+  const password = useRef(null);
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  const signInUser = () => {
+    const res = checkSignInValidData(
+      email.current.value,
+      password.current.value
+    );
+    setErrorMessage(res);
+  };
+
   return (
     <div className="m-0 min-h-full p-0 relative z-0">
       <div className="overflow-hidden absolute min-h-[100vh] w-full -z-10 block">
@@ -22,23 +35,32 @@ const Login = () => {
                 />
               </div>
             </div>
-            <div className="text-center">
+            <form className="text-center" onSubmit={(e) => e.preventDefault()}>
               <div className="signInput mx-[405px] p-[4rem]">
                 <h1 className="text-4xl font-semibold text-white text-left">
                   Sign In
                 </h1>
                 <div className="text-left py-6">
                   <input
+                    ref={email}
                     placeholder="Email or phone number"
+                    type="email"
                     className="text-l text-white my-2 w-full py-3 px-6 bg-zinc-700 rounded-sm"
                   />
                   <input
+                    ref={password}
                     placeholder="password"
+                    type="password"
                     className="text-l text-white my-2 w-full py-3 px-6 bg-zinc-700 rounded-sm"
                   />
-                  <button className="text-l w-full mt-6 font-semibold text-white bg-red-600 rounded-sm px-14 py-3">
+                  <p className="text-red-600 font-semibold">{errorMessage}</p>
+                  <button
+                    className="text-l w-full mt-6 font-semibold text-white bg-red-600 rounded-sm px-14 py-3"
+                    onClick={signInUser}
+                  >
                     Sign In
                   </button>
+
                   <div className="flex justify-between my-2">
                     <p className="text-gray-400 text-sm cursor-pointer">
                       Remember me
@@ -69,7 +91,7 @@ const Login = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </form>
             <div className="pt-20">
               <div className="signInput w-full">
                 <div className="pl-40 py-6 pr-72">

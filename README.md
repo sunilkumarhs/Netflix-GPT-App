@@ -2,6 +2,13 @@
 
 -Create React App
 -Configured TailwindCSS
+-Header
+-Routing of App
+-Login Form
+-SignUp Form
+-Form Validation
+-Firebase setup
+-Deployment of app for production
 
 # Features
 -Login/Sign Up
