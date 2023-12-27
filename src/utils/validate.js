@@ -1,16 +1,16 @@
-export const checkSignInValidData = (email, password) => {
-  const isEmailValid = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/.test(
-    email
-  );
-  const isPasswordValid =
-    /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/.test(
-      password
-    );
+// export const checkSignInValidData = (email, password) => {
+//   const isEmailValid = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/.test(
+//     email
+//   );
+//   const isPasswordValid =
+//     /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/.test(
+//       password
+//     );
 
-  if (!isEmailValid) return "Your Email-Id is not valid!!";
-  if (!isPasswordValid) return "Your Password is not Valid!!";
-  return null;
-};
+//   if (!isEmailValid) return "Your Email-Id is not valid!!";
+//   if (!isPasswordValid) return "Your Password is not Valid!!";
+//   return null;
+// };
 
 export const checkSignUpEmailValidData = (email) => {
   const isEmailValid = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/.test(

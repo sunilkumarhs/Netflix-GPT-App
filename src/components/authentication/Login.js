@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { checkSignInValidData } from "../../utils/validate";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../utils/firebase";
+// import { checkSignInValidData } from "../../utils/validate";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -9,11 +11,28 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState(null);
 
   const signInUser = () => {
-    const res = checkSignInValidData(
+    // const res = checkSignInValidData(
+    //   email.current.value,
+    //   password.current.value
+    // );
+    // setErrorMessage(res);
+    signInWithEmailAndPassword(
+      auth,
       email.current.value,
       password.current.value
-    );
-    setErrorMessage(res);
+    )
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+        navigate("/browse");
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setErrorMessage(errorCode + "-" + errorMessage);
+      });
   };
 
   return (

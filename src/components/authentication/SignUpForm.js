@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { checkSignUpPasswordValidData } from "../../utils/validate";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../utils/firebase";
 
 const SignUpForm = () => {
   const name = useRef(null);
@@ -21,7 +23,21 @@ const SignUpForm = () => {
     } else {
       setNameError(null);
     }
-    if (res === null && nameError === null) navigate("/login");
+    if (res) return;
+    createUserWithEmailAndPassword(auth, mailId, password.current.value)
+      .then((userCredential) => {
+        // Signed up
+        const user = userCredential.user;
+        console.log(user);
+        navigate("/login");
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setErrorMessage(errorCode + "-" + errorMessage);
+        // ..
+      });
   };
 
   return (
@@ -51,6 +67,7 @@ const SignUpForm = () => {
         </div>
         <form onSubmit={(e) => e.preventDefault()}>
           <input
+            readOnly
             placeholder="Emial"
             value={mailId}
             type="email"
