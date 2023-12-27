@@ -1,10 +1,13 @@
 import React, { useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { checkSignUpPasswordValidData } from "../../utils/validate";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../utils/firebase";
+import { useDispatch } from "react-redux";
+import { addUser } from "../../utils/UserSlice";
 
 const SignUpForm = () => {
+  const dispatch = useDispatch();
   const name = useRef(null);
   const password = useRef(null);
   const { mailId } = useParams();
@@ -26,17 +29,31 @@ const SignUpForm = () => {
     if (res) return;
     createUserWithEmailAndPassword(auth, mailId, password.current.value)
       .then((userCredential) => {
-        // Signed up
         const user = userCredential.user;
-        console.log(user);
-        navigate("/login");
-        // ...
+        updateProfile(user, {
+          displayName: name.current.value,
+          photoURL: "https://example.com/jane-q-user/profile.jpg",
+        })
+          .then(() => {
+            const { uid, email, displayName, photoURL } = auth.currentUser;
+            dispatch(
+              addUser({
+                uid: uid,
+                email: email,
+                displayName: displayName,
+                photoURL: photoURL,
+              })
+            );
+            navigate("/browse");
+          })
+          .catch((error) => {
+            navigate("/error");
+          });
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         setErrorMessage(errorCode + "-" + errorMessage);
-        // ..
       });
   };
 
@@ -51,7 +68,12 @@ const SignUpForm = () => {
           />
         </div>
         <div className="px-12 py-7">
-          <p className="text-xl font-bold cursor-pointer hover:border-[1px] border-red-600 px-2 py-1 ">
+          <p
+            className="text-xl font-bold cursor-pointer hover:border-[1px] border-red-600 px-2 py-1 "
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
             Sign In
           </p>
         </div>

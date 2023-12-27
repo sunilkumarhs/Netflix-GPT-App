@@ -9,6 +9,10 @@
 -Form Validation
 -Firebase setup
 -Deployment of app for production
+-Creating Sign Up User Account
+-Implement Sign In  user API
+-Create Redux store for userSlice
+-update Profile
 
 # Features
 -Login/Sign Up
