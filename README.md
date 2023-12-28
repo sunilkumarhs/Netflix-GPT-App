@@ -13,6 +13,7 @@
 -Implement Sign In  user API
 -Create Redux store for userSlice
 -update Profile
+-Sign Out the User
 
 # Features
 -Login/Sign Up
