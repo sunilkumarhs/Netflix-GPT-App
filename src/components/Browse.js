@@ -1,5 +1,5 @@
 import React from "react";
-import BrowseHeader from "./BrowseHeader";
+import BrowseHeader from "./authentication/BrowseHeader";
 
 const Browse = () => {
   return (

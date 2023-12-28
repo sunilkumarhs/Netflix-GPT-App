@@ -1,30 +1,47 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../utils/firebase";
-// import { checkSignInValidData } from "../../utils/validate";
+import { useDispatch } from "react-redux";
+import { addUser, removeUser } from "../../utils/UserSlice";
+import { BgImage, NetflixLogo } from "../../utils/constants";
 
 const Login = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const email = useRef(null);
   const password = useRef(null);
   const [errorMessage, setErrorMessage] = useState(null);
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const { uid, email, displayName, photoURL } = user;
+        dispatch(
+          addUser({
+            uid: uid,
+            email: email,
+            displayName: displayName,
+            photoURL: photoURL,
+          })
+        );
+        navigate("/browse");
+      } else {
+        dispatch(removeUser());
+        navigate("/login");
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
   const signInUser = () => {
-    // const res = checkSignInValidData(
-    //   email.current.value,
-    //   password.current.value
-    // );
-    // setErrorMessage(res);
     signInWithEmailAndPassword(
       auth,
       email.current.value,
       password.current.value
     )
-      .then((userCredential) => {
-        // const user = userCredential.user;
-        navigate("/browse");
-      })
+      .then((userCredential) => {})
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
@@ -35,20 +52,12 @@ const Login = () => {
   return (
     <div className="m-0 min-h-full p-0 relative z-0">
       <div className="overflow-hidden absolute min-h-[100vh] w-full -z-10 block">
-        <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/563192ea-ac0e-4906-a865-ba9899ffafad/6b2842d1-2339-4f08-84f6-148e9fcbe01b/IN-en-20231218-popsignuptwoweeks-perspective_alpha_website_large.jpg"
-          alt="bg-img"
-          className="h-[1080px] min-w-full "
-        />
+        <img src={BgImage} alt="bg-img" className="h-[1080px] min-w-full " />
         <div className="absolute top-0 right-0 bottom-0 left-0 signBg1">
           <div className="absolute top-0 right-0 bottom-0 left-0 signBg2">
             <div className="w-full flex">
               <div className="px-4">
-                <img
-                  className="w-56"
-                  src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
-                  alt="logo"
-                />
+                <img className="w-56" src={NetflixLogo} alt="logo" />
               </div>
             </div>
             <form className="text-center" onSubmit={(e) => e.preventDefault()}>

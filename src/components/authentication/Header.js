@@ -1,16 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { NetflixLogo } from "../../utils/constants";
 
 const Header = () => {
   const navigate = useNavigate();
   return (
     <div className="w-full flex justify-between absolute px-28 py-1">
       <div className="px-6">
-        <img
-          className="w-48"
-          src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
-          alt="logo"
-        />
+        <img className="w-48" src={NetflixLogo} alt="logo" />
       </div>
 
       <div className="flex justify-end px-10">

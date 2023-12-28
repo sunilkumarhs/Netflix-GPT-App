@@ -5,6 +5,7 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../../utils/UserSlice";
+import { NetflixLogo, UserPrfImg } from "../../utils/constants";
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
@@ -32,8 +33,7 @@ const SignUpForm = () => {
         const user = userCredential.user;
         updateProfile(user, {
           displayName: name.current.value,
-          photoURL:
-            "https://occ-0-1946-2186.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABTZ2zlLdBVC05fsd2YQAR43J6vB1NAUBOOrxt7oaFATxMhtdzlNZ846H3D8TZzooe2-FT853YVYs8p001KVFYopWi4D4NXM.png?r=229",
+          photoURL: UserPrfImg,
         })
           .then(() => {
             const { uid, email, displayName, photoURL } = auth.currentUser;
@@ -62,11 +62,7 @@ const SignUpForm = () => {
     <div>
       <div className="w-full flex justify-between">
         <div className="px-4">
-          <img
-            className="w-52"
-            src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
-            alt="logo"
-          />
+          <img className="w-52" src={NetflixLogo} alt="logo" />
         </div>
         <div className="px-12 py-7">
           <p

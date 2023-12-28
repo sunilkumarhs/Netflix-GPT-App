@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { FaRegBell } from "react-icons/fa6";
 import { TiPencil } from "react-icons/ti";
@@ -6,19 +6,44 @@ import { TbTransferIn } from "react-icons/tb";
 import { RiAccountPinCircleLine } from "react-icons/ri";
 import { RiQuestionnaireLine } from "react-icons/ri";
 import { signOut } from "firebase/auth";
-import { auth } from "../utils/firebase";
+import { auth } from "../../utils/firebase";
 import { useNavigate } from "react-router-dom";
+import { onAuthStateChanged } from "firebase/auth";
+import { addUser, removeUser } from "../../utils/UserSlice";
+import { useDispatch } from "react-redux";
+import { ChildrenPrfImg, NetflixLogo } from "../../utils/constants";
 
 const BrowseHeader = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
   const [toggle, setToggle] = useState(false);
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const { uid, email, displayName, photoURL } = user;
+        dispatch(
+          addUser({
+            uid: uid,
+            email: email,
+            displayName: displayName,
+            photoURL: photoURL,
+          })
+        );
+        navigate("/browse");
+      } else {
+        dispatch(removeUser());
+        navigate("/login");
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
   const LogoutUser = () => {
     signOut(auth)
-      .then(() => {
-        navigate("/login");
-      })
+      .then(() => {})
       .catch((error) => {
         navigate("/error");
       });
@@ -27,11 +52,7 @@ const BrowseHeader = () => {
   return (
     <div className="w-full flex justify-between px-4 py-2 signBg2">
       <div className="px-5">
-        <img
-          className="w-[120px]"
-          src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
-          alt="logo"
-        />
+        <img className="w-[120px]" src={NetflixLogo} alt="logo" />
       </div>
 
       <div className="flex justify-end px-4">
@@ -65,7 +86,7 @@ const BrowseHeader = () => {
                   <img
                     className="w-8 h-8 rounded-lg"
                     alt="chimg"
-                    src="https://occ-0-1946-2186.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABYh1GXyzHI-IqH5gUm3DHnqwmPCTLO5rmui76NzrDHgzMA7or4fZQUjLBsrXzx0JiwagUlQSf7Wiu4yI-A4hfpwleGn8R3g.png?r=54d"
+                    src={ChildrenPrfImg}
                   />
                   <p className="font-semibold px-3 py-1">Children</p>
                 </div>

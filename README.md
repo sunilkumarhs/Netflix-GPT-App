@@ -13,7 +13,9 @@
 -Implement Sign In  user API
 -Create Redux store for userSlice
 -update Profile
--Sign Out the User
+-Implement Sign Out User
+-BugFix:if user not logged in Redirect /browse to login page and vice-versa
+-Unsubscribed to the onAuthStateChanged callback
 
 # Features
 -Login/Sign Up
