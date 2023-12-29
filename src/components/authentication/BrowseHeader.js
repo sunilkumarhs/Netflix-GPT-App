@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { addUser, removeUser } from "../../utils/UserSlice";
 import { useDispatch } from "react-redux";
-import { ChildrenPrfImg, NetflixLogo } from "../../utils/constants";
+import { CHLID_PRF_IMG, NETFLIX_LOGO } from "../../utils/constants";
 
 const BrowseHeader = () => {
   const dispatch = useDispatch();
@@ -39,6 +39,7 @@ const BrowseHeader = () => {
     });
 
     return () => unsubscribe();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const LogoutUser = () => {
@@ -52,7 +53,7 @@ const BrowseHeader = () => {
   return (
     <div className="w-full flex justify-between px-4 py-2 signBg2">
       <div className="px-5">
-        <img className="w-[120px]" src={NetflixLogo} alt="logo" />
+        <img className="w-[120px]" src={NETFLIX_LOGO} alt="logo" />
       </div>
 
       <div className="flex justify-end px-4">
@@ -86,7 +87,7 @@ const BrowseHeader = () => {
                   <img
                     className="w-8 h-8 rounded-lg"
                     alt="chimg"
-                    src={ChildrenPrfImg}
+                    src={CHLID_PRF_IMG}
                   />
                   <p className="font-semibold px-3 py-1">Children</p>
                 </div>

@@ -5,7 +5,7 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../../utils/UserSlice";
-import { NetflixLogo, UserPrfImg } from "../../utils/constants";
+import { NETFLIX_LOGO, USER_PRF_IMG } from "../../utils/constants";
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ const SignUpForm = () => {
         const user = userCredential.user;
         updateProfile(user, {
           displayName: name.current.value,
-          photoURL: UserPrfImg,
+          photoURL: USER_PRF_IMG,
         })
           .then(() => {
             const { uid, email, displayName, photoURL } = auth.currentUser;
@@ -62,7 +62,7 @@ const SignUpForm = () => {
     <div>
       <div className="w-full flex justify-between">
         <div className="px-4">
-          <img className="w-52" src={NetflixLogo} alt="logo" />
+          <img className="w-52" src={NETFLIX_LOGO} alt="logo" />
         </div>
         <div className="px-12 py-7">
           <p

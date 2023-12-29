@@ -16,6 +16,9 @@
 -Implement Sign Out User
 -BugFix:if user not logged in Redirect /browse to login page and vice-versa
 -Unsubscribed to the onAuthStateChanged callback
+-Add hardcodedd values to the constants file
+-Register TMDB API & create an app & get access token
+-Get Data from TMDB now playing movies list API
 
 # Features
 -Login/Sign Up

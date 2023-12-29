@@ -4,7 +4,7 @@ import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "../../utils/UserSlice";
-import { BgImage, NetflixLogo } from "../../utils/constants";
+import { BG_IMAGE, NETFLIX_LOGO } from "../../utils/constants";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -33,6 +33,7 @@ const Login = () => {
     });
 
     return () => unsubscribe();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const signInUser = () => {
@@ -52,12 +53,12 @@ const Login = () => {
   return (
     <div className="m-0 min-h-full p-0 relative z-0">
       <div className="overflow-hidden absolute min-h-[100vh] w-full -z-10 block">
-        <img src={BgImage} alt="bg-img" className="h-[1080px] min-w-full " />
+        <img src={BG_IMAGE} alt="bg-img" className="h-[1080px] min-w-full " />
         <div className="absolute top-0 right-0 bottom-0 left-0 signBg1">
           <div className="absolute top-0 right-0 bottom-0 left-0 signBg2">
             <div className="w-full flex">
               <div className="px-4">
-                <img className="w-56" src={NetflixLogo} alt="logo" />
+                <img className="w-56" src={NETFLIX_LOGO} alt="logo" />
               </div>
             </div>
             <form className="text-center" onSubmit={(e) => e.preventDefault()}>

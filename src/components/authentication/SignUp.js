@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import Header from "./Header";
 import { checkSignUpEmailValidData } from "../../utils/validate";
 import { useNavigate } from "react-router-dom";
-import { BgImage } from "../../utils/constants";
+import { BG_IMAGE } from "../../utils/constants";
 
 const SignUp = () => {
   const eMail = useRef(null);
@@ -20,7 +20,7 @@ const SignUp = () => {
     <div>
       <div className="relative overflow-hidden w-full h-full">
         <img
-          src={BgImage}
+          src={BG_IMAGE}
           alt="bg-img"
           className="w-full h-full object-cover overflow-clip"
         />
