@@ -11,3 +11,10 @@
 .signBg2 {
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0, rgba(0, 0, 0, 0) 100%, rgba(0, 0, 0, 0.7) 100%)
 }
+.navBg1 {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0, rgba(0, 0, 0, 0) 100%, rgba(0, 0, 0, 0.7) 100%)
+}
+.navBg2 {
+    background-color: black;
+    /* background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 100%, rgba(0, 0, 0, 0) 100%, rgba(0, 0, 0, 0.7) 100%) */
+}

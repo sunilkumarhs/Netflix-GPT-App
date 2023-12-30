@@ -18,6 +18,7 @@ const BrowseHeader = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
   const [toggle, setToggle] = useState(false);
+  const [navBg, setNavBg] = useState(false);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -50,9 +51,24 @@ const BrowseHeader = () => {
       });
   };
 
+  const changeNavBg = () => {
+    window.scrollY > 150 ? setNavBg(true) : setNavBg(false);
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", changeNavBg);
+    return () => {
+      window.removeEventListener("scroll", changeNavBg);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <div className="w-full flex justify-between px-4 py-2 signBg2">
-      <div className="px-5">
+    <nav
+      className={`w-full flex justify-between px-4 py-2 fixed z-[999] ${
+        navBg ? "navBg2" : "navBg1"
+      }`}
+    >
+      <div className="px-6">
         <img className="w-[120px]" src={NETFLIX_LOGO} alt="logo" />
       </div>
 
@@ -126,7 +142,7 @@ const BrowseHeader = () => {
           </div>
         </div>
       </div>
-    </div>
+    </nav>
   );
 };
 

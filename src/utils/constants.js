@@ -18,3 +18,5 @@ export const API_OPTIONS = {
       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNjg1NWU5NmVkZjU0NzM5OTcwNjBlYzE5MTRkMGIzYSIsInN1YiI6IjY1OGQ3OWVkMjBlNmE1MmI1OThiNDdmZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Kx4ydXwPJTWlz-dbLDbu_LKD69ahI600h8DAzwuc6sg",
   },
 };
+
+export const IMG_PATH = "https://image.tmdb.org/t/p/w300";
