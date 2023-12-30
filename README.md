@@ -19,6 +19,13 @@
 -Add hardcodedd values to the constants file
 -Register TMDB API & create an app & get access token
 -Get Data from TMDB now playing movies list API
+-Custom Hook for now playing video
+-Create movieslice
+-Update store with movie data
+-Planning for MainContainer & SecondaryContainer
+-Fetch Data for Trailer Video
+-Update store with trailer video
+-Embeded the Youtube video and make it autoplay
 
 # Features
 -Login/Sign Up
