@@ -32,7 +32,6 @@ const BrowseHeader = () => {
             photoURL: photoURL,
           })
         );
-        navigate("/browse");
       } else {
         dispatch(removeUser());
         navigate("/login");
@@ -68,11 +67,31 @@ const BrowseHeader = () => {
         navBg ? "navBg2" : "navBg1"
       }`}
     >
-      <div className="px-6">
-        <img className="w-[120px]" src={NETFLIX_LOGO} alt="logo" />
+      <div className="flex">
+        <div className="px-6">
+          <img className="w-[120px]" src={NETFLIX_LOGO} alt="logo" />
+        </div>
+        <div
+          className="py-3 px-2 cursor-pointer"
+          onClick={() => navigate("/browse")}
+        >
+          <p className="text-white">Home</p>
+        </div>
+        <div
+          className="py-3 px-4 cursor-pointer"
+          onClick={() => navigate("/tvShows")}
+        >
+          <p className="text-white">TV Shows</p>
+        </div>
+        <div className="py-3 px-4 cursor-pointer">
+          <p className="text-white">Movies</p>
+        </div>
+        <div className="py-3 px-4 cursor-pointer">
+          <p className="text-white">New & Popular</p>
+        </div>
       </div>
 
-      <div className="flex justify-end px-4">
+      <div className="flex justify-end pl-20 pr-7">
         <div className="flex py-2">
           <p className="text-white font-semibold cursor-pointer py-1">
             Children
@@ -87,15 +106,15 @@ const BrowseHeader = () => {
           onMouseOut={() => setToggle(false)}
         >
           <img
-            className="cursor-pointer w-8 h-8 rounded-md"
+            className="cursor-pointer w-[34px] h-[34px] rounded-md"
             alt="prfImg"
             src={user?.photoURL}
           />
-          <p className="cursor-pointer text-lg">{toggle ? "🔻" : "🔺"}</p>
+          <p className="cursor-pointer text-xl">{toggle ? "🔻" : "🔺"}</p>
           <div
             className={`${
               toggle ? "flex" : "hidden"
-            } py-4 bg-slate-800 absolute top-14 right-5 mx-4 my-2 min-w-[140px] rounded-sm sidebar `}
+            } py-4 bg-slate-800 absolute top-14 right-5 mx-7 my-2 min-w-[140px] rounded-sm sidebar `}
           >
             <ul className="list-none flex flex-col justify-end flex-1 text-white">
               <li className="pl-3 pr-10">
