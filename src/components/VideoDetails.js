@@ -7,7 +7,9 @@ const VideoDetails = ({ title, overview }) => {
     <div className="absolute w-screen aspect-video browseBg1">
       <div className="pl-12 pt-[10%]">
         <h1 className="text-5xl font-bold text-slate-300">{title}</h1>
-        <p className="font-semibold w-[30%] py-3 text-white">{overview}</p>
+        <p className="font-semibold w-[30%] h-44 py-3 text-white overflow-y-hidden text-ellipsis">
+          {overview}
+        </p>
         <div className="pt-8 flex">
           <button className="flex bg-red-500 hover:bg-red-400 rounded-md px-5 py-2">
             <FaPlay className="text-3xl text-white" />
