@@ -5,6 +5,7 @@ import Browse from "./browse/Browse";
 import SignUp from "./authentication/SignUp";
 import SignUpForm from "./authentication/SignUpForm";
 import TVShows from "./tvShows/TVShows";
+import MoviePage from "./moviesSection/MoviePage";
 
 const Body = () => {
   const appRouter = createBrowserRouter([
@@ -27,6 +28,10 @@ const Body = () => {
     {
       path: "/tvShows",
       element: <TVShows />,
+    },
+    {
+      path: "/movies",
+      element: <MoviePage />,
     },
   ]);
 

@@ -1,25 +1,26 @@
 import { useDispatch } from "react-redux";
 import { API_OPTIONS } from "../../utils/constants";
-import { addPopularMovies } from "../../utils/moviesSlice";
+import { addTrending } from "../../utils/moviesSlice";
 import { useEffect } from "react";
 
-const usePopularMovies = () => {
+const useTrending = () => {
   const dispatch = useDispatch();
 
-  const getPopularMovies = async () => {
+  const getTrending = async () => {
     const data = await fetch(
-      "https://api.themoviedb.org/3/movie/popular?&page=2",
+      "https://api.themoviedb.org/3/trending/all/week?",
       API_OPTIONS
     );
 
     const jsonData = await data.json();
-    dispatch(addPopularMovies(jsonData.results));
+    console.log(jsonData.results);
+    dispatch(addTrending(jsonData.results));
   };
 
   useEffect(() => {
-    getPopularMovies();
+    getTrending();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };
 
-export default usePopularMovies;
+export default useTrending;

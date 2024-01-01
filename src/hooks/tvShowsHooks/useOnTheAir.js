@@ -13,7 +13,6 @@ const useOnTheAir = () => {
     );
 
     const jsonData = await data.json();
-    console.log(jsonData.results);
     dispatch(addOnTheAir(jsonData.results));
   };
 

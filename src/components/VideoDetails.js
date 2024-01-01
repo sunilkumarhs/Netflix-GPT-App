@@ -6,7 +6,9 @@ const VideoDetails = ({ title, overview }) => {
   return (
     <div className="absolute w-screen aspect-video browseBg1">
       <div className="pl-12 pt-[10%]">
-        <h1 className="text-5xl font-bold text-slate-300">{title}</h1>
+        <h1 className="text-5xl font-bold text-slate-300">
+          {title.original_title || title.name || title}
+        </h1>
         <p className="font-semibold w-[30%] h-44 py-3 text-white overflow-y-hidden text-ellipsis">
           {overview}
         </p>

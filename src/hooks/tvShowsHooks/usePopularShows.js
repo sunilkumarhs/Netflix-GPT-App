@@ -13,7 +13,6 @@ const usePopularShows = () => {
     );
 
     const jsonData = await data.json();
-    console.log(jsonData.results);
     dispatch(addPopularShows(jsonData.results));
   };
 

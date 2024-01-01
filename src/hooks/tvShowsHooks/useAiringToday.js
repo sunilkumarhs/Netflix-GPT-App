@@ -13,7 +13,6 @@ const useAiringToday = () => {
     );
 
     const jsonData = await data.json();
-    console.log(jsonData.results);
     dispatch(addAiringToday(jsonData.results));
   };
 

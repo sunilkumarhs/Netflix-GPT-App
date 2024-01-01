@@ -13,7 +13,6 @@ const useTopRatedShows = () => {
     );
 
     const jsonData = await data.json();
-    console.log(jsonData.results);
     dispatch(addTopRatedShows(jsonData.results));
   };
 

@@ -12,7 +12,6 @@ const useVideoTrailer = (id) => {
     );
 
     const jsonData = await data.json();
-    console.log(jsonData);
     const trailer = jsonData?.results[0];
     dispatch(addTarilerVideo({ trailer }));
   };

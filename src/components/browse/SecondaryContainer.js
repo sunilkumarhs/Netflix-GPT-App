@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import MovieList from "../MovieList";
 
 const SecondaryContainer = () => {
+  const trendingList = useSelector((store) => store.movies?.trending);
   const nowPlayingMovies = useSelector(
     (store) => store.movies?.nowPlayingMovies
   );
@@ -25,7 +26,7 @@ const SecondaryContainer = () => {
     !onTheAir
   )
     return;
-  const trendingList = [...nowPlayingMovies, ...airingToday].sort(
+  const playingToday = [...nowPlayingMovies, ...airingToday].sort(
     () => Math.random() - 0.5
   );
   const popularList = [...popularMovies, ...popularShows].sort(
@@ -42,6 +43,12 @@ const SecondaryContainer = () => {
       <div className="py-3">
         <p className="text-2xl font-semibold text-white">Trending on Netfilx</p>
         <MovieList moviesList={trendingList} />
+      </div>
+      <div className="py-3">
+        <p className="text-2xl font-semibold text-white">
+          PlayingToday on Netfilx
+        </p>
+        <MovieList moviesList={playingToday} />
       </div>
       <div className="py-3">
         <p className="text-2xl font-semibold text-white">Popular on Netfilx</p>

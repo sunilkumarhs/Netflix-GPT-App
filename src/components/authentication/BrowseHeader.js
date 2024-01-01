@@ -19,6 +19,7 @@ const BrowseHeader = () => {
   const user = useSelector((store) => store.user);
   const [toggle, setToggle] = useState(false);
   const [navBg, setNavBg] = useState(false);
+  const [location, setLocation] = useState(null);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -54,10 +55,21 @@ const BrowseHeader = () => {
     window.scrollY > 150 ? setNavBg(true) : setNavBg(false);
   };
   useEffect(() => {
+    const path = window.location.href;
+    if (path.includes("/browse")) {
+      setLocation(1);
+    } else if (path.includes("/tvShows")) {
+      setLocation(2);
+    } else if (path.includes("/movies")) {
+      setLocation(3);
+    } else {
+      setLocation(0);
+    }
     window.addEventListener("scroll", changeNavBg);
     return () => {
       window.removeEventListener("scroll", changeNavBg);
     };
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -72,22 +84,25 @@ const BrowseHeader = () => {
           <img className="w-[120px]" src={NETFLIX_LOGO} alt="logo" />
         </div>
         <div
-          className="py-3 px-2 cursor-pointer"
+          className="py-3 px-2 cursor-pointer text-slate-300 font-semibold hover:text-slate-400"
           onClick={() => navigate("/browse")}
         >
-          <p className="text-white">Home</p>
+          <p className={`${location === 1 ? "text-white" : ""}`}>Home</p>
         </div>
         <div
-          className="py-3 px-4 cursor-pointer"
+          className="py-3 px-4 cursor-pointer text-slate-300 font-semibold hover:text-slate-400"
           onClick={() => navigate("/tvShows")}
         >
-          <p className="text-white">TV Shows</p>
+          <p className={`${location === 2 ? "text-white" : ""}`}>TV Shows</p>
         </div>
-        <div className="py-3 px-4 cursor-pointer">
-          <p className="text-white">Movies</p>
+        <div
+          className="py-3 px-4 cursor-pointer text-slate-300 font-semibold hover:text-slate-400"
+          onClick={() => navigate("/movies")}
+        >
+          <p className={`${location === 3 ? "text-white" : ""}`}>Movies</p>
         </div>
-        <div className="py-3 px-4 cursor-pointer">
-          <p className="text-white">New & Popular</p>
+        <div className="py-3 px-4 cursor-pointer text-slate-300 font-semibold hover:text-slate-400">
+          <p className="">New & Popular</p>
         </div>
       </div>
 

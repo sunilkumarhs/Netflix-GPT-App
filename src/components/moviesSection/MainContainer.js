@@ -1,17 +1,17 @@
 import React from "react";
 import VideoDetails from "../VideoDetails";
 import { useSelector } from "react-redux";
-import VideoBackground from "./VideoBackground";
+import VideoBackground from "../browse/VideoBackground";
 // import MovieList from "./MovieList";
 
 const MainContainer = () => {
-  const trend = useSelector((store) => store.movies?.trending);
-  if (!trend) return;
-  const displayList = [...trend].sort(() => Math.random() - 0.5);
-  const { id, overview } = displayList[0];
+  const movies = useSelector((store) => store.movies?.nowPlayingMovies);
+  if (!movies) return;
+  const displayList = [...movies].sort(() => Math.random() - 0.5);
+  const { id, original_title, overview } = displayList[0];
   return (
     <div>
-      <VideoDetails title={displayList[0]} overview={overview} />
+      <VideoDetails title={original_title} overview={overview} />
       <VideoBackground id={id} />
       {/* <div className="absolute w-screen aspect-video browseBg1">
         <VideoDetails title={original_title} overview={overview} />
