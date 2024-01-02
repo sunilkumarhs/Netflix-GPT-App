@@ -12,6 +12,9 @@ import { onAuthStateChanged } from "firebase/auth";
 import { addUser, removeUser } from "../../utils/UserSlice";
 import { useDispatch } from "react-redux";
 import { CHLID_PRF_IMG, NETFLIX_LOGO } from "../../utils/constants";
+import { FaSearchengin } from "react-icons/fa6";
+import { gptSearchConst } from "../../utils/gptConatans";
+import { addLang } from "../../utils/gptSearchSlice";
 
 const BrowseHeader = () => {
   const dispatch = useDispatch();
@@ -20,6 +23,8 @@ const BrowseHeader = () => {
   const [toggle, setToggle] = useState(false);
   const [navBg, setNavBg] = useState(false);
   const [location, setLocation] = useState(null);
+  const suported_lang = gptSearchConst.language;
+  const setLang = useSelector((store) => store?.gptSearch);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -62,6 +67,8 @@ const BrowseHeader = () => {
       setLocation(2);
     } else if (path.includes("/movies")) {
       setLocation(3);
+    } else if (path.includes("/gptSearch")) {
+      setLocation(4);
     } else {
       setLocation(0);
     }
@@ -72,6 +79,11 @@ const BrowseHeader = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const handleChange = (e) => {
+    const lang = e.target.value;
+    dispatch(addLang(lang));
+  };
 
   return (
     <nav
@@ -107,7 +119,46 @@ const BrowseHeader = () => {
       </div>
 
       <div className="flex justify-end pl-20 pr-7">
-        <div className="flex py-2">
+        <div className="flex py-1">
+          {location === 4 ? (
+            <div className="py-1 cursor-pointer">
+              <select
+                className="rounded-md bg-slate-400 hover:bg-slate-300 hover:text-slate-500 text-white p-1 text-sm cursor-pointer"
+                name="setLanguage"
+                onChange={(e) => handleChange(e)}
+                value={setLang}
+              >
+                {suported_lang?.map((lang) => (
+                  <option key={lang.value} value={lang.value}>
+                    {lang.name}
+                  </option>
+                ))}
+                {/* <option value={lang.lang1.value}>{lang.lang1.name}</option>
+                <option value={lang.lang2.value} className="py-[1px]">
+                  {lang.lang2.name}
+                </option>
+                <option value={lang.lang3.value} className="py-[1px]">
+                  {lang.lang3.name}
+                </option>
+                <option value={lang.lang4.value} className="py-[1px]">
+                  {lang.lang4.name}
+                </option> */}
+              </select>
+            </div>
+          ) : (
+            ""
+          )}
+          <div
+            className="text-slate-300 flex font-semibold cursor-pointer py-1 px-5 hover:text-slate-400"
+            onClick={() => navigate("/gptSearch")}
+          >
+            <FaSearchengin
+              className={`text-2xl ${location === 4 ? "text-white" : ""}`}
+            />{" "}
+            <span className={`${location === 4 ? "text-white" : ""}`}>
+              Search In GPT
+            </span>
+          </div>
           <p className="text-white font-semibold cursor-pointer py-1">
             Children
           </p>

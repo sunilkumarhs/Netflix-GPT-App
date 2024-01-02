@@ -26,6 +26,11 @@
 -Fetch Data for Trailer Video
 -Update store with trailer video
 -Embeded the Youtube video and make it autoplay
+-Display the movie cards and tvShows cards in the each page
+-randomly picking the display video
+-GPT-Search Page
+-GPT sarch bar
+-Making the GPT-Search Page Multi-Language content Page
 
 # Features
 -Login/Sign Up

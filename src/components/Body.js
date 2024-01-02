@@ -6,6 +6,7 @@ import SignUp from "./authentication/SignUp";
 import SignUpForm from "./authentication/SignUpForm";
 import TVShows from "./tvShows/TVShows";
 import MoviePage from "./moviesSection/MoviePage";
+import GPTSearchPage from "./GPTSearchPage";
 
 const Body = () => {
   const appRouter = createBrowserRouter([
@@ -32,6 +33,10 @@ const Body = () => {
     {
       path: "/movies",
       element: <MoviePage />,
+    },
+    {
+      path: "/gptSearch",
+      element: <GPTSearchPage />,
     },
   ]);
 

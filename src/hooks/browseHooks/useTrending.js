@@ -13,7 +13,6 @@ const useTrending = () => {
     );
 
     const jsonData = await data.json();
-    console.log(jsonData.results);
     dispatch(addTrending(jsonData.results));
   };
 
