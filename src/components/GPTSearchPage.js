@@ -1,53 +1,58 @@
-import React, { useEffect, useState } from "react";
+import React, { useRef } from "react";
 import BrowseHeader from "./authentication/BrowseHeader";
-import { gptSearchConst } from "../utils/gptConatans";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { GPT_IMG } from "../utils/constants";
+import lang from "../utils/languageConstants";
+import useGptSearchResulte from "../hooks/useGptSearchResulte";
+import MovieCards from "./MovieCards";
 
 const GPTSearchPage = () => {
-  const selectLang = useSelector((store) => store.gptSearch);
-  const [title, setTitle] = useState(null);
-  const [placeHolder, setPlaceHolder] = useState(null);
-  const [searchBtn, setSearchBtn] = useState(null);
-  useEffect(() => {
-    if (selectLang === "en") {
-      setTitle(gptSearchConst.content.title.title1);
-      setPlaceHolder(gptSearchConst.content.searchBar.placeHolder.ph1);
-      setSearchBtn(gptSearchConst.content.searchBar.button.b1);
-    } else if (selectLang === "hindi") {
-      setTitle(gptSearchConst.content.title.title2);
-      setPlaceHolder(gptSearchConst.content.searchBar.placeHolder.ph2);
-      setSearchBtn(gptSearchConst.content.searchBar.button.b2);
-    } else if (selectLang === "kannada") {
-      setTitle(gptSearchConst.content.title.title3);
-      setPlaceHolder(gptSearchConst.content.searchBar.placeHolder.ph3);
-      setSearchBtn(gptSearchConst.content.searchBar.button.b3);
-    } else if (selectLang === "japanese") {
-      setTitle(gptSearchConst.content.title.title4);
-      setPlaceHolder(gptSearchConst.content.searchBar.placeHolder.ph4);
-      setSearchBtn(gptSearchConst.content.searchBar.button.b4);
-    }
-  }, [selectLang]);
+  const dispatch = useDispatch();
+  const langKey = useSelector((store) => store.gptSearch);
+  const searchTextRef = useRef(null);
+  const { movieResults } = useSelector((store) => store?.gptMovies);
+  // console.log(movies);
+
+  const handleSearchOpenaiText = () => {
+    console.log(searchTextRef.current.value);
+    const searchText1 = searchTextRef.current.value;
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useGptSearchResulte(searchText1, dispatch);
+  };
 
   return (
-    <div className="">
+    <div className="bg-black">
       <BrowseHeader />
       <div className="w-sreen aspect-video">
         <img className="w-full h-full" alt="gptimage" src={GPT_IMG} />
       </div>
       <div className="-mt-[38rem] text-center relative z-20 px-[24rem]">
-        <div className="signInput py-3 rounded-md">
-          <h1 className="text-3xl text-zinc-300 font-bold">{title}</h1>
+        <form
+          className="signInput py-3 rounded-md"
+          onSubmit={(e) => e.preventDefault()}
+        >
+          <h1 className="text-3xl text-zinc-300 font-bold">
+            {lang[langKey].title}
+          </h1>
           <div className="py-8">
             <input
-              placeholder={placeHolder}
+              ref={searchTextRef}
+              placeholder={lang[langKey].searchPlaceHolder}
               className="py-2 px-3 rounded-xl w-4/6"
             />
-            <button className="bg-red-600 text-white py-2 px-3 rounded-xl ml-6 hover:bg-red-500 font-semibold">
-              {searchBtn}
+            <button
+              className="bg-red-600 text-white py-2 px-3 rounded-xl ml-6 hover:bg-red-500 font-semibold"
+              onClick={handleSearchOpenaiText}
+            >
+              {lang[langKey].search}
             </button>
           </div>
-        </div>
+        </form>
+      </div>
+      <div className="px-1 pb-10 pt-16 flex flex-wrap">
+        {movieResults?.map((movie, index) => (
+          <MovieCards key={index} movieDetails={movie[0]} />
+        ))}
       </div>
     </div>
   );

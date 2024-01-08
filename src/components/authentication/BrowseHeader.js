@@ -9,12 +9,12 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
-import { addUser, removeUser } from "../../utils/UserSlice";
+import { addUser, removeUser } from "../../utils/redux/UserSlice";
 import { useDispatch } from "react-redux";
 import { CHLID_PRF_IMG, NETFLIX_LOGO } from "../../utils/constants";
 import { FaSearchengin } from "react-icons/fa6";
 import { gptSearchConst } from "../../utils/gptConatans";
-import { addLang } from "../../utils/gptSearchSlice";
+import { addLang } from "../../utils/redux/gptSearchSlice";
 
 const BrowseHeader = () => {
   const dispatch = useDispatch();
@@ -180,7 +180,7 @@ const BrowseHeader = () => {
           <div
             className={`${
               toggle ? "flex" : "hidden"
-            } py-4 bg-slate-800 absolute top-14 right-5 mx-7 my-2 min-w-[140px] rounded-sm sidebar `}
+            } py-4 bg-slate-800 absolute top-12 right-5 mx-7 my-2 min-w-[140px] rounded-sm sidebar `}
           >
             <ul className="list-none flex flex-col justify-end flex-1 text-white">
               <li className="pl-3 pr-10">

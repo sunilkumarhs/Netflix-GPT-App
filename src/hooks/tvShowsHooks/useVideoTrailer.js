@@ -1,4 +1,4 @@
-import { addTarilerVideo } from "../../utils/moviesSlice";
+import { addTarilerVideo } from "../../utils/redux/moviesSlice";
 import { API_OPTIONS } from "../../utils/constants";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";

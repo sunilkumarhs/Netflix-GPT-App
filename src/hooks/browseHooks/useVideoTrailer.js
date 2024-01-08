@@ -1,4 +1,4 @@
-import { addTarilerVideo } from "../../utils/moviesSlice";
+import { addTarilerVideo } from "../../utils/redux/moviesSlice";
 import { API_OPTIONS } from "../../utils/constants";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
@@ -10,12 +10,13 @@ const useVideoTrailer = (id) => {
       `https://api.themoviedb.org/3/movie/${id}/videos?`,
       API_OPTIONS
     );
+    if (data.status === 404) return;
 
     const jsonData = await data.json();
     const filterData = jsonData?.results?.filter(
       (vedio) => vedio?.type === "Trailer"
     );
-    const trailer = filterData.length ? filterData[0] : jsonData.results[0];
+    const trailer = filterData?.length ? filterData[0] : jsonData?.results[0];
     dispatch(addTarilerVideo({ trailer }));
   };
 

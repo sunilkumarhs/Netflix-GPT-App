@@ -14,11 +14,12 @@ export const API_OPTIONS = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNjg1NWU5NmVkZjU0NzM5OTcwNjBlYzE5MTRkMGIzYSIsInN1YiI6IjY1OGQ3OWVkMjBlNmE1MmI1OThiNDdmZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Kx4ydXwPJTWlz-dbLDbu_LKD69ahI600h8DAzwuc6sg",
+    Authorization: "Bearer " + process.env.REACT_APP_TMDB_KEY,
   },
 };
 
 export const IMG_PATH = "https://image.tmdb.org/t/p/w300";
 export const GPT_IMG =
   "https://img.freepik.com/free-vector/chat-bot-concept-illustration_114360-5412.jpg?w=740&t=st=1704179389~exp=1704179989~hmac=9ad4142da9fd6382f172e92eca05177a1748fc9d5d87bc3ff1e6642c1f3c79bb";
+
+export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY;

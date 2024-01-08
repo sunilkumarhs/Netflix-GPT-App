@@ -4,7 +4,7 @@ import { checkSignUpPasswordValidData } from "../../utils/validate";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../utils/firebase";
 import { useDispatch } from "react-redux";
-import { addUser } from "../../utils/UserSlice";
+import { addUser } from "../../utils/redux/UserSlice";
 import { NETFLIX_LOGO, USER_PRF_IMG } from "../../utils/constants";
 
 const SignUpForm = () => {

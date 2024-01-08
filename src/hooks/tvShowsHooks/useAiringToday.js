@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { API_OPTIONS } from "../../utils/constants";
 import { useEffect } from "react";
-import { addAiringToday } from "../../utils/tvShowsSlice";
+import { addAiringToday } from "../../utils/redux/tvShowsSlice";
 
 const useAiringToday = () => {
   const dispatch = useDispatch();

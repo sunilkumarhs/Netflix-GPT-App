@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { API_OPTIONS } from "../../utils/constants";
 import { useEffect } from "react";
-import { addOnTheAir } from "../../utils/tvShowsSlice";
+import { addOnTheAir } from "../../utils/redux/tvShowsSlice";
 
 const useOnTheAir = () => {
   const dispatch = useDispatch();

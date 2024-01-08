@@ -5,7 +5,7 @@ import useVideoTrailer from "../../hooks/browseHooks/useVideoTrailer";
 const VideoBackground = ({ id }) => {
   useVideoTrailer(id);
   const trailerVideo = useSelector(
-    (store) => store.movies?.trailerVideo?.trailer?.key
+    (store) => store?.movies?.trailerVideo?.trailer?.key
   );
 
   return (

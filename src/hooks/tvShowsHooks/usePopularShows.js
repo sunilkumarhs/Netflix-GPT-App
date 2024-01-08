@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { API_OPTIONS } from "../../utils/constants";
 import { useEffect } from "react";
-import { addPopularShows } from "../../utils/tvShowsSlice";
+import { addPopularShows } from "../../utils/redux/tvShowsSlice";
 
 const usePopularShows = () => {
   const dispatch = useDispatch();
