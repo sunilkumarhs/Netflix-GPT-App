@@ -37,7 +37,7 @@ const useGptSearchResulte = async (searchText1, dispatch) => {
   const promiseArray = movies?.map((movie) => searchMovies(movie));
 
   const moviesResult = await Promise.all(promiseArray);
-  // console.log(moviesResult);
+  console.log(moviesResult);
 
   dispatch(addSearchMovies({ movieNames: movies, movieResults: moviesResult }));
 };

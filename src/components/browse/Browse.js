@@ -11,8 +11,10 @@ import usePopularShows from "../../hooks/tvShowsHooks/usePopularShows";
 import useTopRatedShows from "../../hooks/tvShowsHooks/useTopRatedShows";
 import useOnTheAir from "../../hooks/tvShowsHooks/useOnTheAir";
 import useTrending from "../../hooks/browseHooks/useTrending";
+import useGeneres from "../../hooks/useGeneres";
 
 const Browse = () => {
+  useGeneres();
   useTrending();
   useNowPlayingMovies();
   useAiringToday();

@@ -16,6 +16,8 @@ import { FaSearchengin } from "react-icons/fa6";
 import { gptSearchConst } from "../../utils/gptConatans";
 import { addLang } from "../../utils/redux/gptSearchSlice";
 import { MdLocalMovies } from "react-icons/md";
+import { FiTv } from "react-icons/fi";
+import { GiTv } from "react-icons/gi";
 
 const BrowseHeader = () => {
   const dispatch = useDispatch();
@@ -120,7 +122,7 @@ const BrowseHeader = () => {
               <hr className="py-1" />
               <li className="pl-3 pr-10">
                 <div className="flex py-2 px-1">
-                  <MdLocalMovies className="text-2xl text-slate-300" />{" "}
+                  <FiTv className="text-2xl text-slate-300" />{" "}
                   <p
                     className="px-4 text-sm"
                     onClick={() => navigate("/browse")}
@@ -131,7 +133,7 @@ const BrowseHeader = () => {
               </li>
               <li className="pl-3 pr-10">
                 <div className="flex py-2 px-1">
-                  <MdLocalMovies className="text-2xl text-slate-300" />{" "}
+                  <GiTv className="text-2xl text-slate-300" />{" "}
                   <p
                     className="px-4 text-sm"
                     onClick={() => navigate("/tvShows")}

@@ -10,7 +10,8 @@ const useVideoTrailer = (id) => {
       `https://api.themoviedb.org/3/tv/${id}/videos?`,
       API_OPTIONS
     );
-
+    if (data.status === 404) return;
+    
     const jsonData = await data.json();
     const trailer = jsonData?.results[0];
     dispatch(addTarilerVideo({ trailer }));
