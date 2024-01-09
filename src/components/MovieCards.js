@@ -5,8 +5,8 @@ const MovieCards = ({ movieDetails }) => {
   const poster = movieDetails?.poster_path;
   if (!poster) return;
   return (
-    <div className="py-2 px-1">
-      <div className="py-1 w-[200px] h-[15rem]">
+    <div className="lg:py-2 py-1 px-1">
+      <div className="py-1 lg:w-[200px] lg:h-[15rem] w-[100px] h-[8rem]">
         <img
           className="rounded-md h-full w-full"
           alt="movieImage"

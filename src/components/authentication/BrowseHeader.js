@@ -15,6 +15,7 @@ import { CHLID_PRF_IMG, NETFLIX_LOGO } from "../../utils/constants";
 import { FaSearchengin } from "react-icons/fa6";
 import { gptSearchConst } from "../../utils/gptConatans";
 import { addLang } from "../../utils/redux/gptSearchSlice";
+import { MdLocalMovies } from "react-icons/md";
 
 const BrowseHeader = () => {
   const dispatch = useDispatch();
@@ -91,10 +92,138 @@ const BrowseHeader = () => {
         navBg ? "navBg2" : "navBg1"
       }`}
     >
-      <div className="px-2 md:hidden">
-        <img className="md:w-[120px] w-[130px]" src={NETFLIX_LOGO} alt="logo" />
+      <div className="px-2 lg:hidden flex">
+        <div className="flex flex-1 py-2 justify-end items-center">
+          <img
+            className="cursor-pointer w-[34px] h-[34px] rounded-md"
+            alt="prfImg"
+            src={user?.photoURL}
+            onClick={() => setToggle((prev) => !prev)}
+          />
+          <p className="cursor-pointer text-xl">{toggle ? "🔻" : "🔺"}</p>
+          <div
+            className={`${
+              toggle ? "flex" : "hidden"
+            } py-2 bg-slate-800 absolute top-12 left-0 mx-4 my-2 min-w-[140px] rounded-sm sidebar `}
+          >
+            <ul className="list-none flex flex-col justify-end flex-1 text-white">
+              <li className="pl-3 pr-10">
+                <div className="flex  py-2">
+                  <img
+                    className="w-8 h-8 rounded-lg"
+                    alt="chimg"
+                    src={CHLID_PRF_IMG}
+                  />
+                  <p className="font-semibold px-3 py-1">Children</p>
+                </div>
+              </li>
+              <hr className="py-1" />
+              <li className="pl-3 pr-10">
+                <div className="flex py-2 px-1">
+                  <MdLocalMovies className="text-2xl text-slate-300" />{" "}
+                  <p
+                    className="px-4 text-sm"
+                    onClick={() => navigate("/browse")}
+                  >
+                    Home
+                  </p>
+                </div>
+              </li>
+              <li className="pl-3 pr-10">
+                <div className="flex py-2 px-1">
+                  <MdLocalMovies className="text-2xl text-slate-300" />{" "}
+                  <p
+                    className="px-4 text-sm"
+                    onClick={() => navigate("/tvShows")}
+                  >
+                    TV Shows
+                  </p>
+                </div>
+              </li>
+              <li className="pl-3 pr-10">
+                <div className="flex py-2 px-1">
+                  <MdLocalMovies className="text-2xl text-slate-300" />{" "}
+                  <p
+                    className="px-4 text-sm"
+                    onClick={() => navigate("/movies")}
+                  >
+                    Movies
+                  </p>
+                </div>
+              </li>
+              <li className="pl-3 pr-10">
+                <div
+                  className="text-slate-300 flex py-2 px-1 font-semibold"
+                  onClick={() => navigate("/gptSearch")}
+                >
+                  <FaSearchengin
+                    className={`text-2xl ${location === 4 ? "text-white" : ""}`}
+                  />{" "}
+                  <span
+                    className={`${location === 4 ? "text-white" : ""} px-4`}
+                  >
+                    Search In GPT
+                  </span>
+                </div>
+              </li>
+              {location === 4 ? (
+                <li className="pl-4 pr-10">
+                  <div className="pt-2 pb-4">
+                    <select
+                      className="rounded-md bg-slate-400 hover:bg-slate-300 hover:text-slate-500 text-white p-1 text-sm cursor-pointer"
+                      name="setLanguage"
+                      onChange={(e) => handleChange(e)}
+                      value={setLang}
+                    >
+                      {suported_lang?.map((lang) => (
+                        <option key={lang.value} value={lang.value}>
+                          {lang.name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </li>
+              ) : (
+                ""
+              )}
+
+              <hr className="py-1" />
+              <li className="pl-3 pr-10">
+                <div className="flex py-2 px-1">
+                  <TiPencil className="text-3xl text-slate-300" />{" "}
+                  <p className="px-3 text-sm">Manage Profiles</p>
+                </div>
+              </li>
+              <li className="pl-3 pr-10">
+                <div className="flex px-1">
+                  <TbTransferIn className="text-3xl text-slate-300" />{" "}
+                  <p className="px-3 text-sm">Transfer Profile</p>
+                </div>
+              </li>
+              <li className="pl-3 pr-10">
+                <div className="flex py-2 px-1">
+                  <RiAccountPinCircleLine className="text-3xl text-slate-300" />{" "}
+                  <p className="px-3 text-sm">Account</p>
+                </div>
+              </li>
+              <li className="pl-3 pr-10">
+                <div className="flex pb-3 px-1">
+                  <RiQuestionnaireLine className="text-3xl text-slate-300" />{" "}
+                  <p className="px-3 text-sm">Help Centre</p>
+                </div>
+              </li>
+              <hr className="py-1" />
+              <li className="text-center">
+                <p className="text-sm cursor-pointer" onClick={LogoutUser}>
+                  Sign Out of Netflix
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <img className="w-32" src={NETFLIX_LOGO} alt="logo" />
       </div>
-      <div className="md:flex hidden">
+      <div className="lg:flex hidden">
         <div className="px-6">
           <img className="w-[120px]" src={NETFLIX_LOGO} alt="logo" />
         </div>
@@ -121,7 +250,7 @@ const BrowseHeader = () => {
         </div>
       </div>
 
-      <div className="flex justify-end pl-20 pr-7">
+      <div className="lg:flex justify-end pl-20 pr-7 hidden">
         <div className="flex py-1">
           {location === 4 ? (
             <div className="py-1 cursor-pointer">

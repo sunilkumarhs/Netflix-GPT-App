@@ -18,7 +18,7 @@ const SignUp = () => {
 
   return (
     <div>
-      <div className="relative overflow-hidden w-full md:h-full h-screen">
+      <div className="relative overflow-hidden w-full lg:h-full h-screen">
         <img
           src={BG_IMAGE}
           alt="bg-img"
@@ -39,13 +39,13 @@ const SignUp = () => {
                 membership.
               </p>
               <div className="py-3">
-                <div className="m-1 md:flex justify-center">
+                <div className="m-1 lg:flex justify-center">
                   <input
                     ref={eMail}
                     placeholder="Email address"
                     id="mailId"
                     type="email"
-                    className=" text-white signInput bg-transparent text-l px-4 py-4 md:mx-2 rounded-md md:w-2/6 w-full border-[1px] border-white md:my-0 my-4"
+                    className=" text-white signInput bg-transparent text-l px-4 py-4 lg:mx-2 rounded-md lg:w-2/6 md:w-3/4 w-full border-[1px] border-white lg:my-0 my-4"
                   />
                   <button
                     className="bg-red-600 md:text-2xl text-lg font-bold text-white md:px-8 px-4 py-3 rounded-md"

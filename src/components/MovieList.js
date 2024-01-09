@@ -21,7 +21,7 @@ const MovieList = ({ moviesList }) => {
     <div>
       {mouseState && scrollvalue > 0 ? (
         <div
-          className="signInput absolute left-0 mt-2 py-20"
+          className="lg:block hidden signInput absolute left-0 mt-2 py-20"
           onMouseOver={mouseIn}
         >
           <button onClick={() => scrollOffers(-1000)}>
@@ -33,7 +33,7 @@ const MovieList = ({ moviesList }) => {
       )}
       {mouseState ? (
         <div
-          className="signInput absolute right-0 mt-2 py-20 px-2"
+          className="lg:block hidden signInput absolute right-0 mt-2 py-20 px-2"
           onMouseOver={mouseIn}
         >
           <button className="" onClick={() => scrollOffers(1000)}>

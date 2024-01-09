@@ -51,22 +51,29 @@ const Login = () => {
   };
 
   return (
-    <div className="m-0 min-h-full p-0 relative z-0">
+    <div>
       <div className="overflow-hidden absolute min-h-[100vh] w-full -z-10 block">
-        <img src={BG_IMAGE} alt="bg-img" className="h-[1080px] min-w-full " />
+        <img
+          src={BG_IMAGE}
+          alt="bg-img"
+          className="lg:h-[1080px] h-screen  min-w-full"
+        />
         <div className="absolute top-0 right-0 bottom-0 left-0 signBg1">
           <div className="absolute top-0 right-0 bottom-0 left-0 signBg2">
             <div className="w-full flex">
               <div className="px-4">
-                <img className="w-56" src={NETFLIX_LOGO} alt="logo" />
+                <img className="md:w-56 w-36" src={NETFLIX_LOGO} alt="logo" />
               </div>
             </div>
-            <form className="text-center" onSubmit={(e) => e.preventDefault()}>
-              <div className="signInput mx-[405px] p-[4rem]">
-                <h1 className="text-4xl font-semibold text-white text-left">
+            <form
+              className="text-center lg:my-0 my-6"
+              onSubmit={(e) => e.preventDefault()}
+            >
+              <div className="signInput xl:mx-[405px] mx-2 md:mx-6 md:p-[4rem] p-8">
+                <h1 className="md:text-4xl text-2xl font-semibold text-white text-left">
                   Sign In
                 </h1>
-                <div className="text-left py-6">
+                <div className="text-left md:py-6 py-3">
                   <input
                     ref={email}
                     placeholder="Email or phone number"
@@ -95,7 +102,7 @@ const Login = () => {
                       Need help?
                     </p>
                   </div>
-                  <div className="py-12">
+                  <div className="md:py-12 py-6">
                     <p className="text-l text-slate-500">
                       New to Netflix?{" "}
                       <span
@@ -118,25 +125,33 @@ const Login = () => {
                 </div>
               </div>
             </form>
-            <div className="pt-20">
+            <div className="lg:pt-20 pt-6">
               <div className="signInput w-full">
-                <div className="pl-40 py-6 pr-72">
+                <div className="xl:pl-40 md:pl-12 lg:py-6 xl:pr-72 md:pr-12 pl-4 py-3 pr-4">
                   <p className="text-slate-400 text-l">
                     Questions? Call 000-800-919-1694
                   </p>
                   <div className="flex flex-wrap py-8">
-                    <p className="text-slate-400 text-sm pr-52 pb-3">FAQ</p>
-                    <p className="text-slate-400 text-sm pr-48">HelpCentre</p>
-                    <p className="text-slate-400 text-sm pr-48">Terms of Use</p>
-                    <p className="text-slate-400 text-sm">Privacy</p>
-                    <p className="text-slate-400 text-sm pr-28">
+                    <p className="text-slate-400 text-sm lg:pr-52  pr-20 pb-3">
+                      FAQ
+                    </p>
+                    <p className="text-slate-400 text-sm lg:pr-48 pr-20">
+                      HelpCentre
+                    </p>
+                    <p className="text-slate-400 text-sm lg:pr-48 md:pr-80">
+                      Terms of Use
+                    </p>
+                    <p className="text-slate-400 text-sm lg:pr-0 md:pr-16 pr-12">
+                      Privacy
+                    </p>
+                    <p className="text-slate-400 text-sm lg:pr-28 md:pr-8 pr-2">
                       Cookie Preferences
                     </p>
                     <p className="text-slate-400 text-sm">
                       Corporate Information
                     </p>
                   </div>
-                  <select className="mb-10 py-2 px-5 bg-black text-white border-[1px] border-gray-300">
+                  <select className="md:mb-10 mb-4 py-2 px-5 bg-black text-white border-[1px] border-gray-300">
                     <option value="English">English</option>
                     <option value="Hindi">Hindi</option>
                   </select>

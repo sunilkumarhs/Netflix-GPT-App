@@ -76,7 +76,7 @@ const SignUpForm = () => {
         </div>
       </div>
       <hr />
-      <div className="m-2 md:py-10 py-4 md:px-[26rem] px-2">
+      <div className="m-2 lg:py-10 md:py-20 py-12 lg:px-[26rem] px-2 md:px-10">
         <h1 className="md:text-3xl text-xl font-bold py-2">
           Create a password to start your membership
         </h1>
@@ -116,9 +116,9 @@ const SignUpForm = () => {
           </button>
         </form>
       </div>
-      <div className="pt-20">
+      <div className="md:pt-20 pt-10">
         <div className="bg-slate-200 w-full">
-          <div className="md:pl-24 md:py-6 md:pr-72 pl-4 py-2">
+          <div className="lg:pl-24 md:py-6 lg:pr-72 md:pl-12 md:pr-12 pl-4 py-2">
             <p className="text-slate-400 text-l">
               Questions? Call 000-800-919-1694
             </p>
@@ -127,12 +127,18 @@ const SignUpForm = () => {
               <p className="text-slate-400 text-sm md:pr-48 pr-20">
                 HelpCentre
               </p>
-              <p className="text-slate-400 text-sm md:pr-48">Terms of Use</p>
-              <p className="text-slate-400 text-sm">Privacy</p>
-              <p className="text-slate-400 text-sm pr-28">Cookie Preferences</p>
+              <p className="text-slate-400 text-sm lg:pr-48 md:pr-10">
+                Terms of Use
+              </p>
+              <p className="text-slate-400 text-sm lg:pr-0 md:pr-44 pr-12">
+                Privacy
+              </p>
+              <p className="text-slate-400 text-sm lg:pr-28 md:pr-32 pr-6">
+                Cookie Preferences
+              </p>
               <p className="text-slate-400 text-sm">Corporate Information</p>
             </div>
-            <select className="mb-10 py-2 px-5 bg-white text-black border-[1px] border-gray-300">
+            <select className="mb-10 md:mb-9 md:mt-0 mt-4 py-2 px-5 bg-white text-black border-[1px] border-gray-300">
               <option value="English">English</option>
               <option value="Hindi">Hindi</option>
             </select>
