@@ -61,10 +61,10 @@ const SignUpForm = () => {
   return (
     <div>
       <div className="w-full flex justify-between">
-        <div className="px-4">
-          <img className="w-52" src={NETFLIX_LOGO} alt="logo" />
+        <div className="md:px-4 px-2">
+          <img className="md:w-52 w-32" src={NETFLIX_LOGO} alt="logo" />
         </div>
-        <div className="px-12 py-7">
+        <div className="md:px-12 md:py-7 px-3 py-2">
           <p
             className="text-xl font-bold cursor-pointer hover:border-[1px] border-red-600 px-2 py-1 "
             onClick={() => {
@@ -76,13 +76,15 @@ const SignUpForm = () => {
         </div>
       </div>
       <hr />
-      <div className="m-2 py-10 px-[26rem]">
-        <h1 className="text-3xl font-bold py-2">
+      <div className="m-2 md:py-10 py-4 md:px-[26rem] px-2">
+        <h1 className="md:text-3xl text-xl font-bold py-2">
           Create a password to start your membership
         </h1>
         <div className="py-2">
-          <p className="text-xl">Just a few more steps and you're done!</p>
-          <p className="text-xl">We hate paperwork, too.</p>
+          <p className="md:text-xl text-sm">
+            Just a few more steps and you're done!
+          </p>
+          <p className="md:text-xl text-sm">We hate paperwork, too.</p>
         </div>
         <form onSubmit={(e) => e.preventDefault()}>
           <input
@@ -116,14 +118,16 @@ const SignUpForm = () => {
       </div>
       <div className="pt-20">
         <div className="bg-slate-200 w-full">
-          <div className="pl-24 py-6 pr-72">
+          <div className="md:pl-24 md:py-6 md:pr-72 pl-4 py-2">
             <p className="text-slate-400 text-l">
               Questions? Call 000-800-919-1694
             </p>
-            <div className="flex flex-wrap py-8">
-              <p className="text-slate-400 text-sm pr-52 pb-3">FAQ</p>
-              <p className="text-slate-400 text-sm pr-48">HelpCentre</p>
-              <p className="text-slate-400 text-sm pr-48">Terms of Use</p>
+            <div className="flex flex-wrap md:py-8 py-4">
+              <p className="text-slate-400 text-sm md:pr-52 pr-20 pb-3">FAQ</p>
+              <p className="text-slate-400 text-sm md:pr-48 pr-20">
+                HelpCentre
+              </p>
+              <p className="text-slate-400 text-sm md:pr-48">Terms of Use</p>
               <p className="text-slate-400 text-sm">Privacy</p>
               <p className="text-slate-400 text-sm pr-28">Cookie Preferences</p>
               <p className="text-slate-400 text-sm">Corporate Information</p>

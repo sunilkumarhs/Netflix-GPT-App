@@ -1,10 +1,11 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { API_OPTIONS } from "../../utils/constants";
 import { addTrending } from "../../utils/redux/moviesSlice";
 import { useEffect } from "react";
 
 const useTrending = () => {
   const dispatch = useDispatch();
+  const trendingList = useSelector((store) => store.movies?.trending);
 
   const getTrending = async () => {
     const data = await fetch(
@@ -17,7 +18,7 @@ const useTrending = () => {
   };
 
   useEffect(() => {
-    getTrending();
+    !trendingList && getTrending();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };

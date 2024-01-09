@@ -4,6 +4,8 @@
 -Configured TailwindCSS
 -Header
 -Routing of App
+-Recieving the movie names from Openai and searching the movies by name in tmdb api.
+-Rendering the movies recived from tmdb in the GPT-Search Page.
 -Login Form
 -SignUp Form
 -Form Validation
@@ -31,6 +33,8 @@
 -GPT-Search Page
 -GPT sarch bar
 -Making the GPT-Search Page Multi-Language content Page
+-Recieving the movie names from Openai and searching the movies by name in tmdb api.
+-Rendering the movies recived from tmdb in the GPT-Search Page.
 
 # Features
 -Login/Sign Up

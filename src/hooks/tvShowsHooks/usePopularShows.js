@@ -1,10 +1,11 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { API_OPTIONS } from "../../utils/constants";
 import { useEffect } from "react";
 import { addPopularShows } from "../../utils/redux/tvShowsSlice";
 
 const usePopularShows = () => {
   const dispatch = useDispatch();
+  const popularShows = useSelector((store) => store?.tvShows?.popularShows);
 
   const getPopularShows = async () => {
     const data = await fetch(
@@ -17,7 +18,7 @@ const usePopularShows = () => {
   };
 
   useEffect(() => {
-    getPopularShows();
+    !popularShows && getPopularShows();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };

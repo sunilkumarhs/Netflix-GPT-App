@@ -1,10 +1,11 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { API_OPTIONS } from "../../utils/constants";
 import { useEffect } from "react";
 import { addAiringToday } from "../../utils/redux/tvShowsSlice";
 
 const useAiringToday = () => {
   const dispatch = useDispatch();
+  const airingToday = useSelector((store) => store?.tvShows?.airingToday);
 
   const getAiringToday = async () => {
     const data = await fetch(
@@ -17,7 +18,7 @@ const useAiringToday = () => {
   };
 
   useEffect(() => {
-    getAiringToday();
+    !airingToday && getAiringToday();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };

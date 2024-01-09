@@ -87,11 +87,14 @@ const BrowseHeader = () => {
 
   return (
     <nav
-      className={`w-full flex justify-between px-4 py-2 fixed z-[999] ${
+      className={`w-full flex justify-between md:px-4 md:py-2 fixed z-[999] ${
         navBg ? "navBg2" : "navBg1"
       }`}
     >
-      <div className="flex">
+      <div className="px-2 md:hidden">
+        <img className="md:w-[120px] w-[130px]" src={NETFLIX_LOGO} alt="logo" />
+      </div>
+      <div className="md:flex hidden">
         <div className="px-6">
           <img className="w-[120px]" src={NETFLIX_LOGO} alt="logo" />
         </div>
@@ -133,16 +136,6 @@ const BrowseHeader = () => {
                     {lang.name}
                   </option>
                 ))}
-                {/* <option value={lang.lang1.value}>{lang.lang1.name}</option>
-                <option value={lang.lang2.value} className="py-[1px]">
-                  {lang.lang2.name}
-                </option>
-                <option value={lang.lang3.value} className="py-[1px]">
-                  {lang.lang3.name}
-                </option>
-                <option value={lang.lang4.value} className="py-[1px]">
-                  {lang.lang4.name}
-                </option> */}
               </select>
             </div>
           ) : (

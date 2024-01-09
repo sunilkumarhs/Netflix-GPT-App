@@ -14,7 +14,7 @@ const GPTSearchPage = () => {
   // console.log(movies);
 
   const handleSearchOpenaiText = () => {
-    console.log(searchTextRef.current.value);
+    // console.log(searchTextRef.current.value);
     const searchText1 = searchTextRef.current.value;
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useGptSearchResulte(searchText1, dispatch);
