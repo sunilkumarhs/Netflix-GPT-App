@@ -39,33 +39,33 @@ const SecondaryContainer = () => {
     () => Math.random() - 0.5
   );
   return (
-    <div className="lg:pl-12 pl-4 lg:-mt-56 -mt-36 relative z-20">
+    <div className=" lg:-mt-56 -mt-36 relative z-20">
       <div className="lg:py-3 py-1">
-        <p className="lg:text-2xl text-xl font-semibold text-white">
+        <p className="lg:text-2xl text-xl font-semibold text-white lg:pl-12 pl-4">
           Trending on Netfilx
         </p>
         <MovieList moviesList={trendingList} />
       </div>
       <div className="lg:py-3 py-1">
-        <p className="lg:text-2xl text-xl font-semibold text-white">
+        <p className="lg:text-2xl text-xl font-semibold text-white lg:pl-12 pl-4">
           PlayingToday on Netfilx
         </p>
         <MovieList moviesList={playingToday} />
       </div>
       <div className="lg:py-3 py-1">
-        <p className="lg:text-2xl text-xl font-semibold text-white">
+        <p className="lg:text-2xl text-xl font-semibold text-white lg:pl-12 pl-4">
           Popular on Netfilx
         </p>
         <MovieList moviesList={popularList} />
       </div>
       <div className="lg:py-3 py-1">
-        <p className="lg:text-2xl text-xl font-semibold text-white">
+        <p className="lg:text-2xl text-xl font-semibold text-white lg:pl-12 pl-4">
           Top Rated on Netfilx
         </p>
         <MovieList moviesList={topRatedList} />
       </div>
       <div className="lg:py-3 py-1">
-        <p className="lg:text-2xl text-xl font-semibold text-white">
+        <p className="lg:text-2xl text-xl font-semibold text-white lg:pl-12 pl-4">
           Upcoming on Netfilx
         </p>
         <MovieList moviesList={upcomingList} />

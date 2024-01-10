@@ -19,32 +19,8 @@ const MovieList = ({ moviesList }) => {
   };
   return (
     <div>
-      {mouseState && scrollvalue > 0 ? (
-        <div
-          className="lg:block hidden signInput absolute left-0 mt-2 py-20"
-          onMouseOver={mouseIn}
-        >
-          <button onClick={() => scrollOffers(-1000)}>
-            <IoIosArrowBack className="text-white text-8xl" />
-          </button>
-        </div>
-      ) : (
-        ""
-      )}
-      {mouseState ? (
-        <div
-          className="lg:block hidden signInput absolute right-0 mt-2 py-20 px-2"
-          onMouseOver={mouseIn}
-        >
-          <button className="" onClick={() => scrollOffers(1000)}>
-            <IoIosArrowForward className="text-white text-8xl" />
-          </button>
-        </div>
-      ) : (
-        ""
-      )}
       <div
-        className="flex overflow-x-scroll no-scrollbar cursor-pointer"
+        className="flex overflow-x-scroll no-scrollbar cursor-pointer lg:pl-12 pl-4"
         ref={ref1}
         onMouseOver={mouseIn}
         onMouseOut={mouseOut}
@@ -53,6 +29,28 @@ const MovieList = ({ moviesList }) => {
           <MovieCards key={movie.id} movieDetails={movie} />
         ))}
       </div>
+      <button
+        className="lg:block hidden signInput -mt-64 relative z-20 float-left py-20 w-20 h-64"
+        onMouseOver={mouseIn}
+        onClick={() => scrollOffers(-1090)}
+      >
+        {mouseState && scrollvalue > 0 ? (
+          <IoIosArrowBack className="text-white text-8xl" />
+        ) : (
+          ""
+        )}
+      </button>
+      <button
+        className="lg:block hidden float-right signInput -mt-64 relative z-20  py-20 w-20 h-64"
+        onMouseOver={mouseIn}
+        onClick={() => scrollOffers(1090)}
+      >
+        {mouseState ? (
+          <IoIosArrowForward className="text-white text-8xl" />
+        ) : (
+          ""
+        )}
+      </button>
     </div>
   );
 };

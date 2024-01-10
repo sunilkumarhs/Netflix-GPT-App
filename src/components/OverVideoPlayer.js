@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { API_OPTIONS } from "../utils/constants";
 import { useSelector } from "react-redux";
 
-const OverVideoPlayer = ({ movieInfo, display }) => {
+const OverVideoPlayer = ({ movieInfo }) => {
   const movieGenere = useSelector((store) => store?.movies?.movieGeneres);
   const tvGenere = useSelector((store) => store?.tvShows?.tvGeneres);
   const [trailerVideo, setTrailerVideo] = useState(null);
@@ -41,17 +41,15 @@ const OverVideoPlayer = ({ movieInfo, display }) => {
   //         );
   const generes =
     movieInfo?.media_type === "tv"
-      ? tvGenere?.genres?.filter((gid) =>
-          movieInfo?.genre_ids?.map((id) => id === gid.id)
-        )
+      ? tvGenere?.genres?.filter((gid) => movieInfo?.genre_ids.includes(gid.id))
       : movieGenere?.genres?.filter((gid) =>
-          movieInfo?.genre_ids?.map((id) => id === gid.id)
+          movieInfo?.genre_ids.includes(gid.id)
         );
   console.log(generes);
 
   return (
-    <div className={` ${display ? "block" : "hidden"} absolute w-40 h-60`}>
-      <div className="w-40 h-40">
+    <div className={`hover:block w-60 h-60 -mt-72 relative z-20 bg-black`}>
+      <div className="w-60 h-40">
         <iframe
           className="w-full h-full"
           src={

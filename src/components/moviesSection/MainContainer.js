@@ -7,7 +7,9 @@ import VideoBackground from "../browse/VideoBackground";
 const MainContainer = () => {
   const movies = useSelector((store) => store.movies?.nowPlayingMovies);
   if (!movies) return;
-  const displayList = [...movies].sort(() => Math.random() - 0.5);
+  const displayList = [...movies].sort(() =>
+    Math.round(Math.random() * movies.length)
+  );
   const { id, original_title, overview } = displayList[0];
   return (
     <div>

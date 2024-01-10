@@ -11,27 +11,27 @@ const SecondaryContainer = () => {
   const topRatedMovies = useSelector((store) => store.movies?.topRatedMovies);
   const upcomingMovies = useSelector((store) => store.movies?.upcomingMovies);
   return (
-    <div className="lg:pl-12 lg:-mt-56 pl-4 -mt-36 relative z-20">
+    <div className=" lg:-mt-56 -mt-36 relative z-20">
       <div className="lg:py-3 py-1">
-        <p className="lg:text-2xl text-xl font-semibold text-white">
+        <p className="lg:text-2xl text-xl font-semibold text-white lg:pl-12 pl-4">
           Now Playing Movies
         </p>
         <MovieList moviesList={nowPlayingMovies} />
       </div>
       <div className="lg:py-3 py-1">
-        <p className="lg:text-2xl text-xl font-semibold text-white">
+        <p className="lg:text-2xl text-xl font-semibold text-white lg:pl-12 pl-4">
           Popular Movies
         </p>
         <MovieList moviesList={popularMovies} />
       </div>
       <div className="lg:py-3 py-1">
-        <p className="lg:text-2xl text-xl font-semibold text-white">
+        <p className="lg:text-2xl text-xl font-semibold text-white lg:pl-12 pl-4">
           Top Rated Movies
         </p>
         <MovieList moviesList={topRatedMovies} />
       </div>
       <div className="lg:py-3 py-1">
-        <p className="lg:text-2xl text-xl font-semibold text-white">
+        <p className="lg:text-2xl text-xl font-semibold text-white lg:pl-12 pl-4">
           Upcoming Movies
         </p>
         <MovieList moviesList={upcomingMovies} />
