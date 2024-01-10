@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import VideoDetails from "../VideoDetails";
 import { useSelector } from "react-redux";
 import VideoBackground from "./VideoBackground";
@@ -6,24 +6,13 @@ import VideoBackground from "./VideoBackground";
 
 const MainContainer = () => {
   const trend = useSelector((store) => store.movies?.trending);
-  console.log(trend);
-  //
-  // const displayList = [...trend].sort(() =>
-  //   Math.round(Math.random() * trend.length)
-  // );
-  // useEffect(() => {
-
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
   if (!trend) return;
-  const num = Math.round(Math.random() * trend?.length);
-  console.log(num);
-  const { id, overview } = trend[num];
-  console.log(trend[num]);
+  const displayList = [...trend].sort(() => Math.random() - 0.5);
+  const { id } = displayList[0];
 
   return (
     <div>
-      <VideoDetails title={num} overview={overview} />
+      <VideoDetails title={displayList[0]} />
       <VideoBackground id={id} />
       {/* <div className="absolute w-screen aspect-video browseBg1">
         <VideoDetails title={original_title} overview={overview} />
