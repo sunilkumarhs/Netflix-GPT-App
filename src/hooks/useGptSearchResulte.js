@@ -3,7 +3,6 @@ import openai from "../utils/openai";
 import { addSearchMovies } from "../utils/redux/gptSearchMoviesSllice";
 
 const searchMovies = async (movie) => {
-  // console.log(movie.split("-"));
   const movieArray = movie.split("-");
   const data = await fetch(
     "https://api.themoviedb.org/3/search/movie?query=" +
@@ -32,12 +31,10 @@ const useGptSearchResulte = async (searchText1, dispatch) => {
   }
 
   const movies = gptSearchResults.choices[0].message.content.split(",");
-  console.log(movies);
 
   const promiseArray = movies?.map((movie) => searchMovies(movie));
 
   const moviesResult = await Promise.all(promiseArray);
-  console.log(moviesResult);
 
   dispatch(addSearchMovies({ movieNames: movies, movieResults: moviesResult }));
 };

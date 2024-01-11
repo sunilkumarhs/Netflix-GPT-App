@@ -8,6 +8,7 @@ import TVShows from "./tvShows/TVShows";
 import MoviePage from "./moviesSection/MoviePage";
 import GPTSearchPage from "./GPTSearchPage";
 import DetailsPage from "./DetailsPage";
+import MyList from "./MyList";
 
 const Body = () => {
   const appRouter = createBrowserRouter([
@@ -42,6 +43,10 @@ const Body = () => {
     {
       path: "/detailsPage",
       element: <DetailsPage />,
+    },
+    {
+      path: "/myList",
+      element: <MyList />,
     },
   ]);
 

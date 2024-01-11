@@ -1,22 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { API_OPTIONS } from "../utils/constants";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { GoDotFill } from "react-icons/go";
 import { FaPlayCircle } from "react-icons/fa";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { BiSolidLike } from "react-icons/bi";
 import { IoIosArrowDropdown } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import { addToList } from "../utils/redux/myListSlice";
+import { MdLibraryAddCheck } from "react-icons/md";
 
 const OverVideoPlayer = ({ movieInfo }) => {
   const movieGenere = useSelector((store) => store?.movies?.movieGeneres);
   const tvGenere = useSelector((store) => store?.tvShows?.tvGeneres);
+  const list = useSelector((store) =>
+    store?.list?.myList.map((list) => list.id)
+  );
   const [trailerVideo, setTrailerVideo] = useState(null);
   const [toggle, setToggle] = useState(false);
   const navigate = useNavigate();
-  // console.log(movieInfo);
+  const dispatch = useDispatch();
   const type = Object.hasOwn(movieInfo, "original_name") ? "tv" : "movie";
-  // console.log(type);
+  const mark = list.includes(movieInfo?.id);
 
   const getTrailerVideo = async () => {
     const data = await fetch(
@@ -26,7 +31,6 @@ const OverVideoPlayer = ({ movieInfo }) => {
     if (data.status === 404) return;
 
     const jsonData = await data.json();
-    // console.log(jsonData);
     const filterData = jsonData?.results?.filter(
       (vedio) => vedio?.type === "Trailer"
     );
@@ -45,10 +49,9 @@ const OverVideoPlayer = ({ movieInfo }) => {
       : movieGenere?.genres?.filter((gid) =>
           movieInfo?.genre_ids.includes(gid.id)
         );
-  // console.log(generes);
 
   return (
-    <div className={`hover:block  -ml-10 -mt-64 relative `}>
+    <div className={`xl:block hidden -ml-10 -mt-64 relative `}>
       <div className="w-[25rem] h-[16rem] absolute z-10 bg-black">
         <div className="w-[25rem] h-[11rem]">
           <iframe
@@ -73,8 +76,15 @@ const OverVideoPlayer = ({ movieInfo }) => {
           </p>
           <div className="flex justify-between py-2 px-3">
             <div className="flex">
-              <FaPlayCircle className="text-white text-5xl mx-2" />{" "}
-              <IoMdAddCircleOutline className="text-white text-5xl mx-2" />{" "}
+              <FaPlayCircle className="text-white text-5xl mx-2" />
+              {mark ? (
+                <MdLibraryAddCheck className="text-white text-5xl mx-2" />
+              ) : (
+                <IoMdAddCircleOutline
+                  className="text-white text-5xl mx-2"
+                  onClick={() => dispatch(addToList(movieInfo))}
+                />
+              )}
               <BiSolidLike className="text-white text-5xl mx-2" />
             </div>
             <div className="text-center">

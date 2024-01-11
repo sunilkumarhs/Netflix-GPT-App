@@ -11,10 +11,8 @@ const GPTSearchPage = () => {
   const langKey = useSelector((store) => store.gptSearch);
   const searchTextRef = useRef(null);
   const { movieResults } = useSelector((store) => store?.gptMovies);
-  // console.log(movies);
 
   const handleSearchOpenaiText = () => {
-    // console.log(searchTextRef.current.value);
     const searchText1 = searchTextRef.current.value;
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useGptSearchResulte(searchText1, dispatch);
@@ -49,7 +47,7 @@ const GPTSearchPage = () => {
           </div>
         </form>
       </div>
-      <div className="lg:px-1 pb-10 pt-16 px-4 flex justify-between overflow-y-hidden">
+      <div className="px-1 pb-10 xl:mx-16 mx-6 pt-16 flex flex-wrap">
         {movieResults?.map((movie, index) => (
           <MovieCards key={index} movieDetails={movie[0]} />
         ))}

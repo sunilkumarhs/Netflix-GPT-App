@@ -72,6 +72,8 @@ const BrowseHeader = () => {
       setLocation(3);
     } else if (path.includes("/gptSearch")) {
       setLocation(4);
+    }else if (path.includes("/myList")) {
+      setLocation(5);
     } else {
       setLocation(0);
     }
@@ -247,8 +249,11 @@ const BrowseHeader = () => {
         >
           <p className={`${location === 3 ? "text-white" : ""}`}>Movies</p>
         </div>
-        <div className="py-3 px-4 cursor-pointer text-slate-300 font-semibold hover:text-slate-400">
-          <p className="">New & Popular</p>
+        <div
+          className="py-3 px-4 cursor-pointer text-slate-300 font-semibold hover:text-slate-400"
+          onClick={() => navigate("/myList")}
+        >
+          <p className={`${location === 5 ? "text-white" : ""}`}>My List</p>
         </div>
       </div>
 
