@@ -6,9 +6,7 @@ import VideoBackground from "./VideoBackground";
 const MainContainer = () => {
   const tvShows = useSelector((store) => store?.tvShows?.popularShows);
   if (!tvShows) return;
-  const displayShow = [...tvShows].sort(() =>
-    Math.round(Math.random() * tvShows.length)
-  );
+  const displayShow = [...tvShows].sort(() => Math.random() - 0.5);
   const { id, name, overview } = displayShow[0];
   return (
     <div>

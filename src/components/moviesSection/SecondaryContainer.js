@@ -18,19 +18,19 @@ const SecondaryContainer = () => {
         </p>
         <MovieList moviesList={nowPlayingMovies} />
       </div>
-      <div className="lg:py-3 py-1">
+      <div className="lg:py-5 py-1">
         <p className="lg:text-2xl text-xl font-semibold text-white lg:pl-12 pl-4">
           Popular Movies
         </p>
         <MovieList moviesList={popularMovies} />
       </div>
-      <div className="lg:py-3 py-1">
+      <div className="lg:py-5 py-1">
         <p className="lg:text-2xl text-xl font-semibold text-white lg:pl-12 pl-4">
           Top Rated Movies
         </p>
         <MovieList moviesList={topRatedMovies} />
       </div>
-      <div className="lg:py-3 py-1">
+      <div className="lg:py-5 py-1">
         <p className="lg:text-2xl text-xl font-semibold text-white lg:pl-12 pl-4">
           Upcoming Movies
         </p>

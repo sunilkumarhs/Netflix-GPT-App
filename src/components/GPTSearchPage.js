@@ -49,7 +49,7 @@ const GPTSearchPage = () => {
           </div>
         </form>
       </div>
-      <div className="lg:px-1 pb-10 pt-16 px-4 flex flex-wrap">
+      <div className="lg:px-1 pb-10 pt-16 px-4 flex justify-between overflow-y-hidden">
         {movieResults?.map((movie, index) => (
           <MovieCards key={index} movieDetails={movie[0]} />
         ))}

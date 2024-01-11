@@ -46,25 +46,25 @@ const SecondaryContainer = () => {
         </p>
         <MovieList moviesList={trendingList} />
       </div>
-      <div className="lg:py-3 py-1">
+      <div className="lg:py-5 py-1">
         <p className="lg:text-2xl text-xl font-semibold text-white lg:pl-12 pl-4">
           PlayingToday on Netfilx
         </p>
         <MovieList moviesList={playingToday} />
       </div>
-      <div className="lg:py-3 py-1">
+      <div className="lg:py-5 py-1">
         <p className="lg:text-2xl text-xl font-semibold text-white lg:pl-12 pl-4">
           Popular on Netfilx
         </p>
         <MovieList moviesList={popularList} />
       </div>
-      <div className="lg:py-3 py-1">
+      <div className="lg:py-5 py-1">
         <p className="lg:text-2xl text-xl font-semibold text-white lg:pl-12 pl-4">
           Top Rated on Netfilx
         </p>
         <MovieList moviesList={topRatedList} />
       </div>
-      <div className="lg:py-3 py-1">
+      <div className="lg:py-5 py-1">
         <p className="lg:text-2xl text-xl font-semibold text-white lg:pl-12 pl-4">
           Upcoming on Netfilx
         </p>
