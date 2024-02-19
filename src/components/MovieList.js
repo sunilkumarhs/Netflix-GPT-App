@@ -7,8 +7,10 @@ const MovieList = ({ moviesList }) => {
   const ref1 = useRef(null);
   const [scrollvalue, setScrollValue] = useState(0);
   const [mouseState, setMouseState] = useState(false);
+  console.log(ref1);
   const scrollOffers = (scrollOffset) => {
     ref1.current.scrollLeft += scrollOffset;
+    console.log(ref1);
     setScrollValue(ref1.current.scrollLeft);
   };
   const mouseIn = () => {

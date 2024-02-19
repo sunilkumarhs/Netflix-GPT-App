@@ -57,7 +57,7 @@ const OverVideoPlayer = ({ movieInfo }) => {
           <iframe
             className="w-full h-full"
             src={
-              "https://www.youtube.com/embed/" +
+              "https://www.youtube-nocookie.com/embed/" +
               trailerVideo?.key +
               "?&showinfo=0&modestbranding=1&autohide=1&autoplay=1&mute=1&rel=0&controls=0"
             }
